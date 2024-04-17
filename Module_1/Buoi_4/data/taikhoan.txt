@@ -1,0 +1,2 @@
+admin,admin,2000000
+quocthinh,732004,996000
