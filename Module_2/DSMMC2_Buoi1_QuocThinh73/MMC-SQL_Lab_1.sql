@@ -14,8 +14,8 @@ CREATE TABLE Pos(
     PositionName        ENUM('Dev', 'Test', 'Scrum Master', 'PM')
 );
 
-DROP TABLE IF EXISTS Account;
-CREATE TABLE Account(
+DROP TABLE IF EXISTS `Account`;
+CREATE TABLE `Account`(
     AccountID           TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Email               VARCHAR(50),
     Username            VARCHAR(50),
@@ -25,9 +25,9 @@ CREATE TABLE Account(
     CreateDate          DATE
 );
 
-DROP TABLE IF EXISTS GroupTable;
-CREATE TABLE GroupTable(
-    GroupID             INT AUTO_INCREMENT PRIMARY KEY,
+DROP TABLE IF EXISTS `Group`;
+CREATE TABLE `Group`(
+    GroupID             TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     GroupName           VARCHAR(50),
     CreatorID           INT,
     CreateDate          DATE
@@ -39,8 +39,8 @@ CREATE TABLE GroupAccount(
     AccountID           TINYINT UNSIGNED NOT NULL,
     JoinDate            DATETIME DEFAULT NOW(),
     PRIMARY KEY(GroupID, AccountID),
-    FOREIGN KEY(GroupID) REFERENCES GroupTable(GroupID),
-    FOREIGN KEY(AccountID) REFERENCES Account(AccountID)
+    FOREIGN KEY(GroupID) REFERENCES `Group`(GroupID),
+    FOREIGN KEY(AccountID) REFERENCES `Account`(AccountID)
 );
 
 DROP TABLE IF EXISTS TypeQuestion;

@@ -83,7 +83,7 @@ CREATE TABLE Answer(
 DROP TABLE IF EXISTS Exam;
 CREATE TABLE Exam(
     ExamID              TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    `Code`                VARCHAR(10),
+    `Code`              VARCHAR(10),
     Title               NVARCHAR(50),
     CategoryID          TINYINT UNSIGNED NOT NULL,
     Duration            INT,
@@ -121,7 +121,7 @@ VALUES                  (1          , 'Dev'         ),
 
 DELETE FROM `Account`;
 INSERT INTO `Account`   (AccountID  , Email                     , Username      , FullName          , DepartmentID  , PositionID    )
-VALUES                  (1          , 'account1@gmail.com'      , 'account1'    , N'Uzumaki Naruto' , 1             , 2             ),
+VALUES                  (1          , 'account1@gmail.com'      , 'account1'    , N'Uzumaki Naruto' , 3             , 2             ),
                         (2          , 'account2@gmail.com'      , 'account2'    , N'Uchiha Sasuke'  , 2             , 3             ),
                         (3          , 'account3@gmail.com'      , 'account3'    , N'Rock Lee'       , 3             , 1             ),
                         (4          , 'account4@gmail.com'      , 'account4'    , N'Haruno Sakura'  , 1             , 1             ),
@@ -136,17 +136,18 @@ VALUES                  (1          , 'account1@gmail.com'      , 'account1'    
                         (13         , 'account13@gmail.com'     , 'account13'   , N'Yamanaka Ino'   , 3             , 2             ),
                         (14         , 'account14@gmail.com'     , 'account14'   , N'Might Guy'      , 6             , 2             ),
                         (15         , 'account15@gmail.com'     , 'account15'   , N'Hyuga Neji'     , 7             , 1             ),
-                        (16         , 'account16@gmail.com'     , 'account16'   , N'Tente'          , 3             , 2             ),
+                        (16         , 'account16@gmail.com'     , 'account16'   , N'Tenten'          , 3             , 2             ),
                         (17         , 'account17@gmail.com'     , 'account17'   , N'Nara Shikamaru' , 5             , 3             ),
-                        (18         , 'account18@gmail.com'     , 'account18'   , N'Yahiko'         , 6             , 1             );
+                        (18         , 'account18@gmail.com'     , 'account18'   , N'Yahiko'         , 6             , 1             ),
+                        (19         , 'account19@gmail.com'     , 'account19'   , N'Dahiko'         , 3             , 2             );
 
 DELETE FROM `Group`;
-INSERT INTO `Group` (GroupID    , GroupName     , CreatorID )
-VALUES              (1          , N'Đội 7'      , 5         ),
-                    (2          , N'Đội 8'      , 7         ),
-                    (3          , N'Đội 10'     , 11        ),
-                    (4          , N'Akatsuki'   , 18        ),
-                    (5          , N'Taka'       , 2         );
+INSERT INTO `Group` (GroupID    , GroupName     , CreatorID , CreateDate    )
+VALUES              (1          , N'Đội 7'      , 5         , '2019-03-01'  ),
+                    (2          , N'Đội 8'      , 7         , '2020-03-01'  ),
+                    (3          , N'Đội 10'     , 11        , '2019-05-01'  ),
+                    (4          , N'Akatsuki'   , 18        , '2019-01-01'  ),
+                    (5          , N'Taka'       , 2         , '2018-07-09'  );
 DELETE FROM GroupAccount;
 INSERT INTO GroupAccount    (GroupID    , AccountID )
 VALUES                      (1          , 5         ),
@@ -195,16 +196,21 @@ VALUES              (1          , N'x = 5'                  , 1             , 1 
                     (4          , N'x = 2 và x = 1'         , 3             , 1             ),
                     (5          , N'x = -2 và x = -1'       , 3             , 0             ),
                     (6          , N'S = 102 cm^2'           , 4             , 0             ),
-                    (7          , N'P = 13picm'             , 5             , 1             );
+                    (7          , N'P = 13picm'             , 5             , 1             ),
+                    (8          , N'Không biết làm'         , 5             , 0             ),
+                    (9          , N'Lạc đề'                 , 5             , 0             ),
+                    (10         , N'Vẽ bậy'                 , 5             , 0             ),
+                    (11         , N'Đáp án sai'             , 5             , 0             ),
+                    (12         , N'x = -1'                 , 3             , 0             );
 
 DELETE FROM Exam;
-INSERT INTO Exam    (ExamID , `Code`    , Title             , CategoryID    , Duration  , CreatorID     )
-VALUES              (1      , 'E101'    , N'Kì thi số 1'    , 1             , 90        , 3             ),
-                    (2      , 'E101'    , N'Kì thi số 2'    , 2             , 45        , 14            ),
-                    (3      , 'E101'    , N'Kì thi số 3'    , 3             , 180       , 10            ),
-                    (4      , 'E101'    , N'Kì thi số 4'    , 4             , 90        , 5             ),
-                    (5      , 'E101'    , N'Kì thi số 5'    , 5             , 75        , 3             ),
-                    (6      , 'E101'    , N'Kì thi số 6'    , 6             , 15        , 1             );
+INSERT INTO Exam    (ExamID , `Code`    , Title             , CategoryID    , Duration  , CreatorID , CreateDate    )
+VALUES              (1      , 'E101'    , N'Kì thi số 1'    , 1             , 90        , 3         , '2018-12-12'  ),
+                    (2      , 'E101'    , N'Kì thi số 2'    , 2             , 45        , 14        , '2019-12-21'  ),
+                    (3      , 'E101'    , N'Kì thi số 3'    , 3             , 180       , 10        , '2019-12-09'  ),
+                    (4      , 'E101'    , N'Kì thi số 4'    , 4             , 90        , 5         , '2019-12-21'  ),
+                    (5      , 'E101'    , N'Kì thi số 5'    , 5             , 75        , 3         , '2019-12-19'  ),
+                    (6      , 'E101'    , N'Kì thi số 6'    , 6             , 15        , 1         , '2020-05-05'  );
 
 DELETE FROM ExamQuestion;
 INSERT INTO ExamQuestion    (ExamID , QuestionID    )
